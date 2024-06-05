@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: "clicker_core"
+      POSTGRES_USER: "clicker_dev"
+      POSTGRES_PASSWORD: "123456"
+    ports:
+      - "5432:5432"
