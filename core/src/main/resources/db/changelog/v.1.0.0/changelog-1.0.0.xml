@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog logicalFilePath="db.changelog-master.xml" xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet  id="CG-2-create-tables"  author="harmonic">
+        <createTable  tableName="player" schemaName="clicker_core">
+            <column  name="id"  type="bigint">
+                <constraints  primaryKey="true"  nullable="false"/>
+            </column>
+            <column  name="nickname"  type="varchar(50)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column  name="money"  type="varchar(50)" defaultValue="0">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+
+        <createTable  tableName="money_generator" schemaName="clicker_core">
+            <column  name="id"  type="bigint">
+                <constraints  primaryKey="true"  nullable="false"/>
+            </column>
+            <column  name="name"  type="varchar(50)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column  name="cost"  type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column  name="value"  type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable  tableName="player_money_generator" schemaName="clicker_core">
+            <column  name="id"  type="bigint">
+                <constraints  primaryKey="true"  nullable="false"/>
+            </column>
+            <column  name="player_id"  type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column  name="generator_id"  type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column  name="count"  type="integer" defaultValue="0"/>
+        </createTable>
+
+        <createIndex tableName="player" indexName="players_nickname_idx" schemaName="clicker_core">
+            <column name="nickname"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

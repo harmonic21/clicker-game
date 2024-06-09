@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/clicker_core
+    username: clicker_dev
+    password: 123456
+    hikari:
+      schema: clicker_core
+
+  liquibase:
+    url: jdbc:postgresql://localhost:5432/clicker_core
+    user: clicker_dev
+    password: 123456
+    change-log: db/master.xml
