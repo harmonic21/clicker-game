@@ -4,7 +4,7 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
     <changeSet  id="CG-2-create-tables"  author="harmonic">
-        <createTable  tableName="players" schemaName="clicker_core">
+        <createTable  tableName="player" schemaName="clicker_core">
             <column  name="id"  type="bigint">
                 <constraints  primaryKey="true"  nullable="false"/>
             </column>
@@ -44,8 +44,8 @@
             <column  name="count"  type="integer" defaultValue="0"/>
         </createTable>
 
-        <createIndex tableName="players" indexName="players_id_idx" schemaName="clicker_core">
-            <column name="id"/>
+        <createIndex tableName="player" indexName="players_nickname_idx" schemaName="clicker_core">
+            <column name="nickname"/>
         </createIndex>
     </changeSet>
 </databaseChangeLog>

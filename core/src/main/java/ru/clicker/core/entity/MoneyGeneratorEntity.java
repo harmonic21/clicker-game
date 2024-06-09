@@ -1,14 +1,12 @@
 package ru.clicker.core.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigInteger;
+import java.util.List;
 
 @Entity
 @Getter
@@ -18,6 +16,7 @@ import java.math.BigInteger;
 public class MoneyGeneratorEntity {
 
     @Id
+    @Column(name = "id", nullable = false)
     private BigInteger id;
 
     @Column(name = "name", nullable = false)
@@ -28,5 +27,8 @@ public class MoneyGeneratorEntity {
 
     @Column(name = "value", nullable = false)
     private BigInteger value;
+
+    @OneToMany(mappedBy = "moneyGenerator")
+    private List<PlayerMoneyGeneratorEntity> playerMoneyGeneratorEntity;
 
 }

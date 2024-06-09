@@ -1,10 +1,7 @@
 package ru.clicker.core.entity;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,18 +13,20 @@ import java.math.BigInteger;
 @Setter
 @EqualsAndHashCode
 @Table(name = "player_money_generator")
+@IdClass(PlayerMoneyGeneratorCompositeId.class)
 public class PlayerMoneyGeneratorEntity {
 
     @Id
-    private BigInteger id;
+    @ManyToOne
+    @JoinColumn(name = "player_id", referencedColumnName = "id")
+    private PlayerEntity player;
 
-    @Column(name = "player_id", nullable = false)
-    private BigInteger playerId;
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "generator_id", referencedColumnName = "id")
+    private MoneyGeneratorEntity moneyGenerator;
 
-    @Column(name = "generator_id", nullable = false)
-    private BigInteger generatorId;
-
-    @Column(name = "count")
+    @Column(name = "count", nullable = true)
     private BigInteger count;
 
 }
